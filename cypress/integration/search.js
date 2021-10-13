@@ -16,4 +16,13 @@ describe("Search elements",()=>{
 
         })
     })
+    it('Search elements with special codes',()=>{
+        cy.readFile('cypress/support/Text/Search.txt').then((text)=>{
+            cy.search(text);
+        })
+        cy.fixture('searchresults').then((searchresult)=>{ 
+            cy.get(searchresult.heading).should('contain','0 results have been found')
+
+        })
+    })
 })
